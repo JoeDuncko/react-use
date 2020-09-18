@@ -14,9 +14,10 @@ const useCookie = (
     [cookieName]
   );
 
-  const deleteCookie = useCallback(() => {
-    Cookies.remove(cookieName);
-    setValue(null);
+  const deleteCookie = useCallback(
+    (options?: Cookies.CookieAttributes) => {
+      Cookies.remove(cookieName, options);
+      setValue(null);
   }, [cookieName]);
 
   return [value, updateCookie, deleteCookie];
